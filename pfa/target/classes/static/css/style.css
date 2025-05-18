@@ -1,0 +1,246 @@
+/* Custom styles for the application */
+
+/* General styles */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa; /* Gris très clair */
+}
+
+footer {
+    background: #2463ef;
+    color: #fff;
+    padding: 2rem 0 1rem 0;
+    margin-top: 3rem;
+    box-shadow: 0 -2px 12px rgba(36,99,239,0.08);
+    font-size: 1.1rem;
+}
+
+footer h2, footer strong {
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+footer p, footer address {
+    color: #e3e8f0;
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #b3c6ff;
+    text-decoration: underline;
+}
+
+footer .card {
+    background: #fff;
+    color: #2463ef;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(36,99,239,0.08);
+    margin-bottom: 1rem;
+}
+
+footer .card-title {
+    color: #2463ef;
+    font-weight: 600;
+}
+
+footer .btn {
+    background: #2463ef;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 0.4rem 1.2rem;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+footer .btn:hover {
+    background: #1431a6;
+    color: #fff;
+}
+
+/* Navbar styles */
+.navbar {
+    background: #2463ef !important;
+    box-shadow: 0 2px 8px rgba(36,99,239,0.08);
+}
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff !important;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #b3c6ff !important;
+}
+
+/* Card styles */
+.card {
+    transition: transform 0.3s;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(36,99,239,0.08);
+    background-color: #fff;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+.card-header {
+    background-color: #2463ef;
+    color: #fff;
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 1rem;
+}
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Button styles */
+.btn-primary,
+.btn-outline-primary {
+    background-color: #2463ef;
+    color: #fff;
+    border: 2px solid #2463ef;
+    transition: all 0.2s;
+}
+.btn-primary:hover,
+.btn-outline-primary:hover {
+    background-color: #1431a6;
+    color: #fff;
+    border: 2px solid #1431a6;
+}
+.btn-secondary {
+    background-color: #fff;
+    color: #2463ef;
+    border: 2px solid #2463ef;
+}
+.btn-secondary:hover {
+    background-color: #e3e8f0;
+    color: #1431a6;
+    border: 2px solid #1431a6;
+}
+.btn-outline-danger {
+    background-color: #fff;
+    color: #D32F2F;
+    border: 2px solid #D32F2F;
+}
+.btn-outline-danger:hover {
+    background-color: #D32F2F;
+    color: #fff;
+    border: 2px solid #D32F2F;
+}
+.btn-outline-warning {
+    background-color: #fff;
+    color: #FFA000;
+    border: 2px solid #FFA000;
+}
+.btn-outline-warning:hover {
+    background-color: #FFA000;
+    color: #fff;
+    border: 2px solid #FFA000;
+}
+
+/* Form styles */
+.form-control:focus,
+.form-select:focus {
+    border-color: #2463ef;
+    box-shadow: 0 0 0 0.25rem rgba(36, 99, 239, 0.15);
+}
+.form-label {
+    font-weight: 500;
+    color: #1431a6;
+}
+
+/* Table styles */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #333333;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #e3e8f0;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #2463ef;
+    background-color: #2463ef;
+    color: #fff;
+}
+.table tbody tr:nth-of-type(odd) {
+    background-color: #f7f9fc;
+}
+.table-hover tbody tr:hover {
+    background-color: #e3e8f0;
+}
+
+/* Badge styles */
+.badge {
+    padding: 0.5em 0.75em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+.bg-success {
+    background-color: #2463ef !important;
+    color: #fff;
+}
+.bg-danger {
+    background-color: #D32F2F !important;
+    color: #fff;
+}
+.bg-warning {
+    background-color: #FFA000 !important;
+    color: #fff;
+}
+
+/* Alert styles */
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+.alert-success {
+    color: #fff;
+    background-color: #2463ef;
+    border-color: #1431a6;
+}
+.alert-danger {
+    color: #fff;
+    background-color: #D32F2F;
+    border-color: #B71C1C;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 1rem;
+    }
+    .table-responsive {
+        overflow-x: auto;
+    }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Réservation</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .register-container {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(36,99,239,0.08);
+        }
+        .form-title {
+            text-align: center;
+            color: #2463ef;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #1431a6;
+        }
+        .form-control, .form-select {
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #e3e8f0;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #2463ef;
+            box-shadow: 0 0 0 0.15rem rgba(36,99,239,0.10);
+        }
+        .btn-register {
+            background-color: #2463ef;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 1.1em;
+            font-weight: 500;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            color: #fff;
+        }
+        .btn-register:hover {
+            background-color: #1431a6;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 600px) {
+            .register-container {
+                padding: 10px;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{layout/main :: body(content=~{::div.content}, title='Réservation')}">
+    <div class="content">
+        <div class="container">
+            <div class="register-container">
+                <h2 class="form-title" th:text="${reservation.id != null} ? 'Modifier une réservation' : 'Ajouter une réservation'"></h2>
+                <form th:action="@{/admin/reservations}" method="post" th:object="${reservation}">
+                    <div class="mb-3">
+                        <label for="utilisateur" class="form-label">Utilisateur</label>
+                        <select class="form-select" id="utilisateur" th:field="*{utilisateur.id}" required>
+                            <option value="">Sélectionner un utilisateur</option>
+                            <option th:each="u : ${utilisateurs}" th:value="${u.id}" th:text="${u.nom} + ' ' + ${u.prenom}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="terrain" class="form-label">Terrain</label>
+                        <select class="form-select" id="terrain" th:field="*{terrain.id}" required>
+                            <option value="">Sélectionner un terrain</option>
+                            <option th:each="t : ${terrains}" th:value="${t.id}" th:text="${t.nom}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dateDebut" class="form-label">Date début</label>
+                        <input type="datetime-local" class="form-control" id="dateDebut" th:field="*{dateDebut}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dateFin" class="form-label">Date fin</label>
+                        <input type="datetime-local" class="form-control" id="dateFin" th:field="*{dateFin}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="statut" class="form-label">Statut</label>
+                        <select class="form-select" id="statut" th:field="*{statut}" required>
+                            <option value="">Sélectionner un statut</option>
+                            <option value="EN_ATTENTE">En attente</option>
+                            <option value="VALIDEE">Validée</option>
+                            <option value="ANNULEE">Annulée</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-register w-100">Enregistrer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

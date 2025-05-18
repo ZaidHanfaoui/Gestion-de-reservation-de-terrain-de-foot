@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Utilisateurs</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Styles pour la liste des réservations */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .card {
+            transition: transform 0.3s;
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-header {
+            background-color: #2563eb;
+            color: white;
+            border-radius: 0.5rem 0.5rem 0 0;
+            padding: 1rem;
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+            border-collapse: collapse;
+        }
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+            background-color: #f8f9fa;
+        }
+        .table tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        .table-hover tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.075);
+        }
+        .badge {
+            padding: 0.5em 0.75em;
+            font-size: 0.75em;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+        }
+        .bg-success {
+            background-color: #28a745 !important;
+        }
+        .bg-danger {
+            background-color: #dc3545 !important;
+        }
+        .bg-warning {
+            background-color: #ffc107 !important;
+        }
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+        /* Conteneur principal pour form et list */
+        .register-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(36,99,239,0.08);
+        }
+        /* Titre centré et bleu */
+        .form-title {
+            text-align: center;
+            color: #2463ef;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        /* Bouton principal large et moderne */
+        .btn-register {
+            background-color: #2463ef;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 1.1em;
+            font-weight: 500;
+            width: 100%;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            color: #fff;
+        }
+        .btn-register:hover {
+            background-color: #1431a6;
+            transform: translateY(-2px);
+        }
+        /* Table stylée pour la liste */
+        .table {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(36,99,239,0.04);
+        }
+        .table thead th {
+            background: #2463ef;
+            color: #fff;
+            border: none;
+        }
+        .table tbody tr:nth-of-type(odd) {
+            background-color: #f7f9fc;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #e3e8f0;
+        }
+        /* Boutons d'action dans la liste */
+        .btn-outline-primary, .btn-outline-danger {
+            border-radius: 6px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.95em;
+            font-weight: 500;
+            margin-right: 0.2rem;
+        }
+        .btn-outline-primary {
+            color: #2463ef;
+            border: 1.5px solid #2463ef;
+            background: #fff;
+        }
+        .btn-outline-primary:hover {
+            background: #2463ef;
+            color: #fff;
+        }
+        .btn-outline-danger {
+            color: #D32F2F;
+            border: 1.5px solid #D32F2F;
+            background: #fff;
+        }
+        .btn-outline-danger:hover {
+            background: #D32F2F;
+            color: #fff;
+        }
+        /* Responsive pour petits écrans */
+        @media (max-width: 768px) {
+            .register-container {
+                padding: 10px;
+                max-width: 100%;
+            }
+            .table {
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{layout/main :: body(content=~{::div.content}, title='Utilisateurs')}">
+    <div class="content">
+        <h1>Utilisateurs</h1>
+        <a th:href="@{/admin/utilisateurs/new}" class="btn btn-primary mb-3">Ajouter un utilisateur</a>
+        <table class="table table-striped align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th style="width:5%;">ID</th>
+                    <th style="width:15%;">Nom</th>
+                    <th style="width:15%;">Prénom</th>
+                    <th style="width:20%;">Email</th>
+                    <th style="width:10%;">Téléphone</th>
+                    <th style="width:15%;">Adresse</th>
+                    <th style="width:10%;">Rôle</th>
+                    <th style="width:10%;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="utilisateur : ${utilisateurs}">
+                    <td th:text="${utilisateur.id}"></td>
+                    <td th:text="${utilisateur.nom}"></td>
+                    <td th:text="${utilisateur.prenom}"></td>
+                    <td th:text="${utilisateur.email}"></td>
+                    <td th:text="${utilisateur.telephone}"></td>
+                    <td th:text="${utilisateur.adresse}"></td>
+                    <td th:text="${utilisateur.role}"></td>
+                    <td>
+                        <a th:href="@{'/admin/utilisateurs/' + ${utilisateur.id} + '/edit'}" class="btn btn-sm btn-outline-primary">Modifier</a>
+                        <a th:href="@{'/admin/utilisateurs/' + ${utilisateur.id} + '/delete'}" class="btn btn-sm btn-outline-danger"
+                           onclick="return confirm('Supprimer cet utilisateur ?')">Supprimer</a>
+                    </td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(utilisateurs)}">
+                    <td colspan="8" class="text-center">Aucun utilisateur</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
